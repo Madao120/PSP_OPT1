@@ -1,18 +1,22 @@
 package org.example;
 
 public class Escritor extends Thread{
-    String mensaje;
-    int contador = 3;
-    public Escritor (String mensaje){
+    String mensaje = "";
+    Buzon buzon;
+
+    public Escritor (String mensaje, String nombre, Buzon buzon){
+        super(nombre);
         this.mensaje = mensaje;
+        this.buzon = buzon;
     }
 
     @Override
     public void run(){
-        while(contador > 0){
-            if(Buzon.mensaje.isEmpty()){
-                Buzon.escribir(mensaje);
-                contador--;
+        for (int i = 0; i < 3; i++) {
+            try {
+                buzon.escribir(mensaje);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }

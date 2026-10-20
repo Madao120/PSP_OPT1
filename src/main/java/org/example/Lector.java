@@ -1,17 +1,20 @@
 package org.example;
 
 public class Lector extends Thread{
-    int contador = 3;
+    Buzon buzon ;
 
-
+    public Lector (String nombre, Buzon buzon){
+        super(nombre);
+        this.buzon = buzon;
+    }
 
     @Override
     public void run(){
-        while(contador > 0){
-            if(!Buzon.getMensaje().isEmpty()){
-                System.out.println("Leyendo mensaje:");
-                Buzon.leer();
-                contador --;
+        for (int i = 0; i < 3; i++) {
+            try {
+                buzon.leer();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }
