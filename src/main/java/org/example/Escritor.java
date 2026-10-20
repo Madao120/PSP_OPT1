@@ -10,6 +10,7 @@ public class Escritor extends Thread{
         this.buzon = buzon;
     }
 
+    // Lanzaremos la ejecución en un bucle ya que queremos que opere 3 veces cada hilo
     @Override
     public void run(){
         for (int i = 0; i < 3; i++) {
