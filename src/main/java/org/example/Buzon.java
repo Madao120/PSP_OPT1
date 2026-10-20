@@ -1,8 +1,9 @@
 package org.example;
 
 public class Buzon {
-    static String mensajeBuzon = "";
+    private String mensajeBuzon = "";
 
+    // S
     public synchronized void leer()throws InterruptedException{
         while (mensajeBuzon.isEmpty()){
             System.out.println(Thread.currentThread().getName() + " No se puede leer, el buzón está vacío");
